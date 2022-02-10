@@ -1,6 +1,6 @@
  # Sixth example
 
-[English](README.en.md) [Español](README.es.md)
+[English](README.md) [Español](README.es.md)
 
 In the end, the WebSocket problem was easier to solve than it seemed: I
 connected to port 3000, because that is the port that is configured within

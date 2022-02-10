@@ -1,6 +1,6 @@
 # Segundo ejemplo
 
-[English](README.en.md) [Español](README.es.md)
+[English](README.md) [Español](README.es.md)
 
 Flask no es suficiente, necesitamos ejecutar tareas *muy costosas* en un sistema
 de tareas. Vamos a usar **celery**, de momento, con un *worker* y, para conectarlo

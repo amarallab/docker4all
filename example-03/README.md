@@ -1,6 +1,6 @@
 # Third example
 
-[English](README.en.md) [Español](README.es.md)
+[English](README.md) [Español](README.es.md)
 
 *[marks from the translator]*
 

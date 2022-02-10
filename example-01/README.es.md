@@ -1,6 +1,6 @@
 # Primer ejemplo
 
-[English](README.en.md) [Español](README.es.md)
+[English](README.md) [Español](README.es.md)
 
 En este caso, solo he creado un container `web` indicando
 un directorio con un fichero `Dockerfile` para la receta

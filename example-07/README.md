@@ -1,6 +1,6 @@
 # Seventh exammple
 
-[English](README.en.md) [Español](README.es.md)
+[English](README.md) [Español](README.es.md)
 
 I got curious about WebSockets, so let's work it into the service. 
 Since I don't want to change the example we have with

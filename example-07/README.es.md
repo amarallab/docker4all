@@ -1,6 +1,6 @@
 # Séptimo ejemplo
 
-[English](README.en.md) [Español](README.es.md)
+[English](README.md) [Español](README.es.md)
 
 Me ha salido la curiosidad de los WebSockets, así que vamos a
 ello. Como no quiero cambiar el ejemplo que tenemos con

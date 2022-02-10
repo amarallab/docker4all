@@ -1,6 +1,6 @@
 # Quinto ejemplo
 
-[English](README.en.md) [Español](README.es.md)
+[English](README.md) [Español](README.es.md)
 
 Vamos a meter en el desarrollo un frontend con React y
 TypeScript.

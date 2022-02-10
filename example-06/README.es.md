@@ -1,6 +1,6 @@
 # Sexto ejemplo
 
-[English](README.en.md) [Español](README.es.md)
+[English](README.md) [Español](README.es.md)
 
 Al final, era más sencillo de lo que parecía el tema del WebSocket: Intenta
 conectar al puerto 3000, porque es el puerto que está configurado dentro
