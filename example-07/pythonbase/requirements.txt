@@ -1,0 +1,13 @@
+celery==5.2.3
+eventlet==0.30.2
+Flask==2.0.2
+Flask-Cors==3.0.10
+Flask-SocketIO==5.1.1
+Flask-SQLAlchemy==2.5.1
+gevent==21.12.0
+gevent-websocket==0.10.1
+gunicorn==20.1.0
+mysqlclient==2.1.0
+PyYAML==6.0
+redis==4.1.2
+watchdog==2.1.6

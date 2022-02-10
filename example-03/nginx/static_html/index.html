@@ -1,0 +1,22 @@
+<html>
+<script type="text/javascript">
+    function send_run_waiting() {
+        var delay = parseInt(document.getElementById("delay").value, 10);
+        if (isNaN(delay)) {
+            return false;
+        }
+        document.getElementById("run-waiting-form").action = "/api/run/waiting/" + delay
+    }
+</script>
+<body>
+    <h1>Docker4All</h1>
+    <p>This is the welcome page, and it is static!</p>
+    <form id="run-waiting-form" action="#" onsubmit="send_run_waiting()">
+        <label>Delay in seconds:</label>
+        <input type="text" id="delay"><br/>
+        <input type="submit">
+    </form>
+    <hr />
+    <a href="/api/task/list">Get all the tasks</a>
+</body>
+</html>

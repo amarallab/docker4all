@@ -1,0 +1,38 @@
+version: "3.9"
+services:
+  nginx:
+    image: nginx:1.17-alpine
+    ports:
+      - 8080:80
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/static_html:/usr/share/nginx/html
+    depends_on:
+      - flask
+
+  flask:
+    build: pythonbase
+    command: python -m example.flask
+    stop_signal: SIGINT
+    environment:
+      - FLASK_ENV=development
+    env_file:
+      - redis-conf.env
+    volumes:
+      - ./code:/app
+    depends_on:
+      - redis
+
+  worker:
+    build: pythonbase
+    command: watchmedo auto-restart --directory=/app --pattern=*.py --recursive -- celery --app example.celery worker --loglevel=info
+    volumes:
+      - ./code:/app
+    env_file:
+      - redis-conf.env
+    depends_on:
+      - flask
+      - redis
+
+  redis:
+    image: redis:6-alpine

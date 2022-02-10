@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  web:
+    build: pythonbase
+    command: python -m example.flask
+    stop_signal: SIGINT
+    ports:
+      - 8080:5000
+    env_file:
+      - redis-conf.env
+    volumes:
+      - ./code:/app
+    depends_on:
+      - redis
+
+  worker:
+    build: pythonbase
+    command: celery --app example.celery worker --loglevel=info
+    volumes:
+      - ./code:/app
+    env_file:
+      - redis-conf.env
+    depends_on:
+      - web
+      - redis
+
+  redis:
+    image: redis:6-alpine

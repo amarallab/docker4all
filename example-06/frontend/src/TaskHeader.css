@@ -1,0 +1,10 @@
+.TaskHeader-left {
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.TaskHeader-right {
+    text-align: right;
+}

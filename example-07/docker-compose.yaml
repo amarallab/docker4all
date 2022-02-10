@@ -1,0 +1,76 @@
+version: "3.9"
+services:
+  nginx:
+    image: nginx:1.17-alpine
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - frontend
+      - flask
+      - flask_ws
+
+  flask_ws:
+    build: pythonbase
+    command: watchmedo auto-restart --directory=/app --pattern=*.py --recursive -- gunicorn --worker-class geventwebsocket.gunicorn.workers.GeventWebSocketWorker websockets.flask:app -b 0.0.0.0:5000
+    stop_signal: SIGINT
+    env_file:
+      - mariadb.env
+    environment:
+      - FLASK_ENV=development
+    volumes:
+      - ./code:/app
+    depends_on:
+      mariadb:
+        condition: service_healthy
+
+  mariadb:
+    image: mariadb:latest
+    env_file:
+      - mariadb.env
+    ports:
+      - 7777:3306
+    volumes:
+      - ./mariadb-data:/var/lib/mysql
+    healthcheck:
+      test: "mysql -u $${MARIADB_USER} -p$${MARIADB_PASSWORD} -e \"USE $${MARIADB_DATABASE}\""
+      interval: 2s
+      timeout: 20s
+      retries: 10
+
+  frontend:
+    image: node:alpine
+    command: sh -c "npm install && npm start"
+    working_dir: /app
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend:/app
+
+  flask:
+    build: pythonbase
+    command: python -m example.flask
+    stop_signal: SIGINT
+    environment:
+      - FLASK_ENV=development
+    env_file:
+      - redis-conf.env
+    volumes:
+      - ./code:/app
+    depends_on:
+      - redis
+
+  worker:
+    build: pythonbase
+    command: watchmedo auto-restart --directory=/app --pattern=*.py --recursive -- celery --app example.celery worker --loglevel=info
+    volumes:
+      - ./code:/app
+    env_file:
+      - redis-conf.env
+    depends_on:
+      - flask
+      - redis
+
+  redis:
+    image: redis:6-alpine

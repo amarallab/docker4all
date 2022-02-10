@@ -1,0 +1,42 @@
+.message {
+    width: 200px;
+    margin: 12px 0px 12px 0px;
+    height: auto;
+    float: right;
+}
+
+.bubble {
+    padding: 12px;
+    margin-bottom: 12px;
+    position: relative;
+    background-color: blue;
+    color: white;
+}
+
+.bubble:after {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+    left: auto;
+	right: 0px;
+	bottom: -10px;
+	border: 6px solid;
+	border-color: blue blue transparent transparent;
+}
+
+.date {
+    font-size: small;
+    text-align: right;
+}
+
+.text {
+    padding: 0.1em;
+	text-align: left;
+    line-height: 1.5em;
+}
+
+.user {
+    font-size: small;
+    text-align: right;
+}
