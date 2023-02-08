@@ -9,3 +9,4 @@
 1. [Fifth example](example-05/README.md)
 1. [Sixth example](example-06/README.md)
 1. [Seventh example](example-07/README.md)
+1. [Eighth example](example-08/README.md)
